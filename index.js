@@ -8,39 +8,41 @@ const { fifaData } = require('./fifa.js')
 let matchesIn2014 = fifaData.filter((item) =>{
 	return item.Year === 2014;
 })
-//(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
-let  homeTeamsIn2014 = matchesIn2014.filter((item) => {
-	return item["Home Team Name"];
-	  }).map((item) => {
-		return item["Home Team Name"]; 
-})
-console.log(homeTeamsIn2014)
-
-//(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
-let  awayTeamsIn2014 = matchesIn2014.filter((item) => {
-	return item["Away Team Name"];
-	  }).map((item) => {
-		return item["Away Team Name"]; 
-})
-console.log(awayTeamsIn2014)
-//(c) 2014 Dünya kupası finali Ev sahibi takım golleri (dizide "Home Team Goals" anahtarı)
-let  homeTeamsGoalIn2014 = matchesIn2014.filter((item) => {
-	return item["Home Team Goals"];
-	  }).map((item) => {
-		return item["Home Team Goals"]; 
-})
-console.log(homeTeamsGoalIn2014)
-//(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
-let  awayTeamsGoalIn2014 = matchesIn2014.filter((item) => {
-	return item["Away Team Goals"];
-	  }).map((item) => {
-		return item["Away Team Goals"]; 
-})
-console.log(awayTeamsGoalIn2014)
 
 //(e) 2014 Dünya kupası finali kazananı*/
 let finalMatchIn2014 = matchesIn2014.filter((item) => {
 	return item["Stage"] === "Final"});
+
+//(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
+let  homeTeamIn2014 = finalMatchIn2014.filter((item) => {
+	return item["Home Team Name"];
+	  }).map((item) => {
+		return item["Home Team Name"]; 
+})
+console.log(homeTeamIn2014[0])
+
+//(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
+let  awayTeamIn2014 = finalMatchIn2014.filter((item) => {
+	return item["Away Team Name"];
+	  }).map((item) => {
+		return item["Away Team Name"]; 
+})
+console.log(awayTeamIn2014[0])
+//(c) 2014 Dünya kupası finali Ev sahibi takım golleri (dizide "Home Team Goals" anahtarı)
+let  homeTeamGoalsIn2014 = finalMatchIn2014.filter((item) => {
+	return item["Home Team Goals"];
+	  }).map((item) => {
+		return item["Home Team Goals"]; 
+})
+console.log(homeTeamGoalsIn2014[0])
+
+//(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
+let  awayTeamGoalsIn2014 = finalMatchIn2014.filter((item) => {
+	return item["Away Team Goals"];
+	  }).map((item) => {
+		return item["Away Team Goals"]; 
+})
+console.log(awayTeamGoalsIn2014[0])
 
 // Kazanan takımı bulur
 function whoIsWinner(arr){
@@ -146,12 +148,26 @@ function YillaraGoreKazananlar(arr,cbfFinaller, cbfYillar, cbfKazananlar) {
 	
 */
 
-function OrtalamaGolSayisi(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
-}
+function OrtalamaGolSayisi(finalMatches) {
+  
+  function averageGoals(team){
+    let TeamGoals = []
+    for(let match of finalMatches){
+      TeamGoals.push(match[team])
+    }
+    let sumTeamGoals = TeamGoals.reduce((acc,item) => {
+    return acc + item
+    });
+    let averageTeamGoals = (sumTeamGoals / finalMatches.length)
+    return averageTeamGoals
+  }
 
+  let averageHomeTeamGoals = averageGoals("Home Team Goals");
+  let averageAwayTeamGoals = averageGoals("Away Team Goals");
+  
+  return (averageAwayTeamGoals + averageHomeTeamGoals).toFixed(2)
+
+}
 
 
 /// EKSTRA ÇALIŞMALAR ///
