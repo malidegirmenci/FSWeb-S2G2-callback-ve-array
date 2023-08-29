@@ -166,9 +166,9 @@ function OrtalamaGolSayisi(finalMatches) {
 	İpucu: "takım kısaltmaları" (team initials) için datada araştırma yapın!
 İpucu: `.reduce` Kullanın*/
 
-function UlkelerinKazanmaSayilari(arr) {
+function UlkelerinKazanmaSayilari(finalMatches) {
 	let winnerTeamInitial= []
-	for(let match of arr){
+	for(let match of finalMatches){
 		if(match['Home Team Goals'] > match['Away Team Goals']){
 			winnerTeamInitial.push(match["Home Team Initials"])
 		}else{
@@ -205,12 +205,46 @@ console.log(UlkelerinKazanmaSayilari(Finaller(fifaData)))
 /*  BONUS 2:  
 EnCokGolAtan() isminde bir fonksiyon yazın, `data` yı parametre olarak alsın ve Dünya kupası finallerinde en çok gol atan takımı döndürsün */
 
-function EnCokGolAtan(/* kodlar buraya */) {
+function EnCokGolAtan(finalMatches) {
+	let teamsAndGoals = []
 	
-    /* kodlar buraya */
-	
-}
+	for(let match of finalMatches){
+		//Ev sahiplerinin attıkları goller
+		let homeTeamGoals = {}
+		let keyNameHome = match["Home Team Name"]
+		let valueHome = match["Home Team Goals"]
+		homeTeamGoals[keyNameHome] = valueHome;
+		teamsAndGoals.push(homeTeamGoals)
+		//Konuk takımların attıkları goller
 
+		let awayTeamGoals = {}
+		let keyNameAway = match["Away Team Name"]
+		let valueAway = match["Away Team Goals"]
+		awayTeamGoals[keyNameAway] = valueAway;
+		teamsAndGoals.push(awayTeamGoals)
+	}
+	let result = {};
+	for (let item of teamsAndGoals){
+		let key = Object.keys(item)[0];
+		let value = item[key];
+		if(result[key] === undefined){
+			result[key]=value;
+		}else{
+			result[key] += value;
+		}
+	}
+	let maxKey = null;
+	let maxValue = -Infinity; //sayısal değerler de en küçük değer ya da 0 da konulabilir
+
+	for(let key in result){
+		if(result[key] > maxValue){
+			maxValue = result[key];
+			maxKey = key;
+		}
+	}
+	return maxKey;
+}
+console.log("En çok gol atan",EnCokGolAtan(Finaller(fifaData)), "takımıdır.")
 
 /*  BONUS 3: 
 EnKotuDefans() adında bir fonksiyon yazın, `data` yı parametre olarak alsın ve Dünya kupasında finallerinde en çok golü yiyen takımı döndürsün*/
