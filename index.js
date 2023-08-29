@@ -42,6 +42,7 @@ console.log(awayTeamsGoalIn2014)
 let finalMatchIn2014 = matchesIn2014.filter((item) => {
 	return item["Stage"] === "Final"});
 
+// Kazanan takımı bulur
 function whoIsWinner(arr){
 	if(arr[0]['Home Team Goals'] > arr[0]['Away Team Goals']){
 	  return arr[0]['Home Team Name']
@@ -91,11 +92,19 @@ function Yillar(arr,cbfFinaller) {
 	💡 İPUCU: Beraberlikler(ties) için şimdilik endişelenmeyin (Detaylı bilgi için README dosyasına bakabilirsiniz.)
 	4. Tüm kazanan ülkelerin isimlerini içeren `kazananlar` adında bir dizi(array) döndürecek(return)  */ 
 
-function Kazananlar(/* kodlar buraya */) {
+	function Kazananlar(arr, cbfFinaller) {
+		let matches = cbfFinaller(arr)
+		let winners = []
+		for(let match of matches){
+			if(match['Home Team Goals'] > match['Away Team Goals']){
+				winners.push(match['Home Team Name'])
+			}else{
+				winners.push(match['Away Team Name'])
+			}
+		}
+		return winners
+	}
 	
-    /* kodlar buraya */
-	
-}
 
 
 
@@ -110,7 +119,7 @@ function Kazananlar(/* kodlar buraya */) {
 	💡 İPUCU: her cümlenin adım 4'te belirtilen cümleyle birebir aynı olması gerekmektedir.
 */
 
-function YillaraGoreKazananlar(/* kodlar buraya */) {
+function YillaraGoreKazananlar(arr,cbfFinaller, cbfYillar, cbfKazananlar) {
 	
 /* kodlar buraya */
 
