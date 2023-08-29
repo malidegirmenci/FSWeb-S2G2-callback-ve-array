@@ -50,7 +50,7 @@ function whoIsWinner(arr){
 	}
   }
 
-  console.log(whoIsWinner(finalMatchIn2014))
+  console.log("Winner : ", whoIsWinner(finalMatchIn2014))
 
 
 /*  Görev 2: 
