@@ -120,9 +120,15 @@ function Yillar(arr,cbfFinaller) {
 */
 
 function YillaraGoreKazananlar(arr,cbfFinaller, cbfYillar, cbfKazananlar) {
-	
-/* kodlar buraya */
-
+	let finalMatches = cbfFinaller(arr)
+	let finalYears = cbfYillar(finalMatches,cbfFinaller)
+	let finalWinners = cbfKazananlar(finalMatches,cbfFinaller)
+  	let strArr = []
+  
+  for(let i = 0; i < finalMatches.length; i++){
+    strArr.push(`${finalYears[i]} yılında, ${finalWinners[i]} dünya kupasını kazandı!`)
+  }
+  return strArr;
 }
 
 
