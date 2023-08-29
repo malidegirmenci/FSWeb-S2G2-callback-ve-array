@@ -17,7 +17,7 @@ Yazılımcılar olarak çalıştığmız projelerde sıkça JSON verilerini serv
 
 Bu projede 1930-2014 arasında oynana Dünya Kupası verilerini kullanacağız.
 
-Verilen veri seti (`index.js`nin ilk satırında yükleniyor) 1930 sonrası oynanan tüm FIFA FDünya Kupası maçlarının raporunu içeriyor. Her bir raporda birçok başlık altında bilgiler var: `Year`,`Stage`, `Stadium`,  `Home Team Name`,`Home Team Goals`, `Away Team Name`, ve `Away Team Goals`. 
+Verilen veri seti (`index.js`nin ilk satırında yükleniyor) 1930 sonrası oynanan tüm FIFA Dünya Kupası maçlarının raporunu içeriyor. Her bir raporda birçok başlık altında bilgiler var: `Year`,`Stage`, `Stadium`,  `Home Team Name`,`Home Team Goals`, `Away Team Name`, ve `Away Team Goals`. 
 
 Bugünkü amacınız elinzideki veri setini kullanarak ilgi çekici istatistikler elde etmek.
 
