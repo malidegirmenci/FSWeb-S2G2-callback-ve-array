@@ -5,16 +5,52 @@ const { fifaData } = require('./fifa.js')
 	Verilen datayı parçalayarak aşağıdaki verileri (console.log-ing) elde ederek pratik yapın. 
 	
 	💡 İPUCU: Öncelikle datayı filtrelemek isteyebilirsiniz */
-
+let matchesIn2014 = fifaData.filter((item) =>{
+	return item.Year === 2014;
+})
 //(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
+let  homeTeamsIn2014 = matchesIn2014.filter((item) => {
+	return item["Home Team Name"];
+	  }).map((item) => {
+		return item["Home Team Name"]; 
+})
+console.log(homeTeamsIn2014)
 
 //(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
-
+let  awayTeamsIn2014 = matchesIn2014.filter((item) => {
+	return item["Away Team Name"];
+	  }).map((item) => {
+		return item["Away Team Name"]; 
+})
+console.log(awayTeamsIn2014)
 //(c) 2014 Dünya kupası finali Ev sahibi takım golleri (dizide "Home Team Goals" anahtarı)
-
+let  homeTeamsGoalIn2014 = matchesIn2014.filter((item) => {
+	return item["Home Team Goals"];
+	  }).map((item) => {
+		return item["Home Team Goals"]; 
+})
+console.log(homeTeamsGoalIn2014)
 //(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
+let  awayTeamsGoalIn2014 = matchesIn2014.filter((item) => {
+	return item["Away Team Goals"];
+	  }).map((item) => {
+		return item["Away Team Goals"]; 
+})
+console.log(awayTeamsGoalIn2014)
 
 //(e) 2014 Dünya kupası finali kazananı*/
+let finalMatchIn2014 = matchesIn2014.filter((item) => {
+	return item["Stage"] === "Final"});
+
+function whoIsWinner(arr){
+	if(arr[0]['Home Team Goals'] > arr[0]['Away Team Goals']){
+	  return arr[0]['Home Team Name']
+	}else{
+	  return arr[0]['Away Team Name']
+	}
+  }
+
+  console.log(whoIsWinner(finalMatchIn2014))
 
 
 /*  Görev 2: 

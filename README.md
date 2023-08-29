@@ -13,7 +13,7 @@
   
 ## Giriş
 
-Yazılımcılar olarak çalıştığmız projelerde sıkça JSON verilerini serverlar ile iletişimde, verileri özetlemede, imajları sayfamıza almada ve daha bir çok işte kullanırız. Bu tarz yapıları ne erkenden öğrenmek bize çok fayda sağlayacak.
+Yazılımcılar olarak çalıştığmız projelerde sıkça JSON verilerini serverlar ile iletişimde, verileri özetlemede, imajları sayfamıza almada ve daha bir çok işte kullanırız. Bu tarz yapıları erkenden öğrenmek bize çok fayda sağlayacak.
 
 Bu projede 1930-2014 arasında oynana Dünya Kupası verilerini kullanacağız.
 
