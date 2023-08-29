@@ -60,13 +60,11 @@ function whoIsWinner(arr){ // Kazanan takımı bulur
 */
 
 function Finaller(arr) {
-    let finalMatches = fifaData.filter((item) =>{
+    let finalMatches = arr.filter((item) =>{
 		return item.Stage === "Final";
 	})
 	return finalMatches
 }
-
-
 
 /*  Görev 3: 
 	Bir higher-order fonksiyonu olan Yillar isimli fonksiyona aşağıdakileri uygulayın: 
@@ -79,7 +77,6 @@ function Yillar(arr,cbfFinaller) {
 	let yearsOfFinalMatches = cbfFinaller(arr);
 	return yearsOfFinalMatches.map((item) => {return item.Year})
 }
-
 
 /*  Görev 4: 
 	Bir higher-order fonksiyonunu olan Kazananlar isimli fonksiyona aşağıdakileri uygulayın:  
@@ -102,9 +99,6 @@ function Yillar(arr,cbfFinaller) {
 		return winners
 	}
 	
-
-
-
 /*  Görev 5: 
 	Bir higher-order fonksiyonu olan YillaraGoreKazananlar isimli fonksiyona aşağıdakileri uygulayın:
 	1. fifaData dizisini(array) fonksiyonunun birinci parametresi olarak alacak
@@ -172,12 +166,40 @@ function OrtalamaGolSayisi(finalMatches) {
 	İpucu: "takım kısaltmaları" (team initials) için datada araştırma yapın!
 İpucu: `.reduce` Kullanın*/
 
-function UlkelerinKazanmaSayilari(/* kodlar buraya */) {
+function UlkelerinKazanmaSayilari(arr) {
+	let winnerTeamInitial= []
+	for(let match of arr){
+		if(match['Home Team Goals'] > match['Away Team Goals']){
+			winnerTeamInitial.push(match["Home Team Initials"])
+		}else{
+			winnerTeamInitial.push(match["Away Team Initials"])
+		}
+	}
+	let winnerTeams = winnerTeamInitial.reduce((acc,currentValue) =>{
+		if(acc[currentValue] === undefined){
+			acc[currentValue] = 1;
+		}else{
+			acc[currentValue]++;
+		}
+		return acc;
+	},{});
 	
-    /* kodlar buraya */
+	/* En çok kazanan takımı bulur
+	let maxKey = null;
+	let maxValue = 0;
+	let winner = []
+	for(let key in winnerTeams){
+		if(winnerTeams[key]>maxValue){
+			maxValue = winnerTeams[key]
+			maxKey = key;
+		}
+	}
+	console.log("Winner : ", maxKey, " Trophy : ", maxValue)
+	*/
+	return winnerTeams
 	
 }
-
+console.log(UlkelerinKazanmaSayilari(Finaller(fifaData)))
 
 
 /*  BONUS 2:  
