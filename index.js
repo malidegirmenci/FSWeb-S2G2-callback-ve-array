@@ -215,8 +215,8 @@ function EnCokGolAtan(finalMatches) {
 		let valueHome = match["Home Team Goals"]
 		homeTeamGoals[keyNameHome] = valueHome;
 		teamsAndGoals.push(homeTeamGoals)
-		//Konuk takımların attıkları goller
 
+		//Konuk takımların attıkları goller
 		let awayTeamGoals = {}
 		let keyNameAway = match["Away Team Name"]
 		let valueAway = match["Away Team Goals"]
@@ -249,12 +249,47 @@ console.log("En çok gol atan",EnCokGolAtan(Finaller(fifaData)), "takımıdır."
 /*  BONUS 3: 
 EnKotuDefans() adında bir fonksiyon yazın, `data` yı parametre olarak alsın ve Dünya kupasında finallerinde en çok golü yiyen takımı döndürsün*/
 
-function EnKotuDefans(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
-}
+function EnKotuDefans(finalMatches) {
+	let teamsAndGoals = []
 
+	for(let match of finalMatches){
+		//Misafir Takımların attıkları goller
+		let homeTeamGoals = {}
+		let keyNameHome = match["Home Team Name"]
+		let valueHome = match["Away Team Goals"]
+		homeTeamGoals[keyNameHome] = valueHome;
+		teamsAndGoals.push(homeTeamGoals)
+
+		//Ev Sahibi Takımların attıkları goller
+		let awayTeamGoals = {}
+		let keyNameAway = match["Away Team Name"]
+		let valueAway = match["Home Team Goals"]
+		awayTeamGoals[keyNameAway] = valueAway;
+		teamsAndGoals.push(awayTeamGoals)
+	}
+	let result = {};
+	for (let item of teamsAndGoals){
+		let key = Object.keys(item)[0];
+		let value = item[key];
+		if(result[key] === undefined){
+			result[key]=value;
+		}else{
+			result[key] += value;
+		}
+	}
+	let maxKey = null;
+	let maxValue = -Infinity; //sayısal değerler de en küçük değer ya da 0 da konulabilir
+
+	for(let key in result){
+		if(result[key] > maxValue){
+			maxValue = result[key];
+			maxKey = key;
+		}
+	}
+	
+	return maxKey
+}
+console.log("En çok gol yiyen",EnKotuDefans(Finaller(fifaData)),"takımıdır") 
 
 /* Hala vaktiniz varsa, README dosyasında listelenen hedeflerden istediğinizi aşağıdaki boşluğa yazabilirsiniz. */
 
