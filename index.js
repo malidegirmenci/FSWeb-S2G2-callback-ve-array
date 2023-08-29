@@ -77,9 +77,9 @@ function Finaller(arr) {
 	3. Finaller data setindeki tüm yılları içeren "years" adındaki diziyi(array) döndürecek
 	*/
 
-function Yillar(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
+function Yillar(arr,cbfFinaller) {
+	let yearsOfFinalMatches = cbfFinaller(arr);
+	return yearsOfFinalMatches.map((item) => {return item.Year})
 }
 
 
