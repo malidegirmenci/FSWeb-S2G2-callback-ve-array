@@ -61,9 +61,11 @@ function whoIsWinner(arr){
 	💡 İPUCU - verilen data içindeki nesnelerin(objects) "Stage" anahtarına bakmalısınız
 */
 
-function Finaller(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
+function Finaller(arr) {
+    let finalMatches = fifaData.filter((item) =>{
+		return item.Stage === "Final";
+	})
+	return finalMatches
 }
 
 
