@@ -5,13 +5,13 @@ const { fifaData } = require('./fifa.js')
 	Verilen datayı parçalayarak aşağıdaki verileri (console.log-ing) elde ederek pratik yapın. 
 	
 	💡 İPUCU: Öncelikle datayı filtrelemek isteyebilirsiniz */
-let matchesIn2014 = fifaData.filter((item) =>{
+let matchesIn2014 = fifaData.filter((item) =>{ //2014 yılındaki tüm maçları diziye döndürür
 	return item.Year === 2014;
 })
 
-//(e) 2014 Dünya kupası finali kazananı*/
-let finalMatchIn2014 = matchesIn2014.filter((item) => {
+let finalMatchIn2014 = matchesIn2014.filter((item) => { //final maçını olarak diziye döndürür
 	return item["Stage"] === "Final"});
+
 
 //(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
 let  homeTeamIn2014 = finalMatchIn2014.filter((item) => {
@@ -37,24 +37,19 @@ let  homeTeamGoalsIn2014 = finalMatchIn2014.filter((item) => {
 console.log(homeTeamGoalsIn2014[0])
 
 //(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
-let  awayTeamGoalsIn2014 = finalMatchIn2014.filter((item) => {
-	return item["Away Team Goals"];
-	  }).map((item) => {
-		return item["Away Team Goals"]; 
-})
-console.log(awayTeamGoalsIn2014[0])
+let  awayTeamGoalsIn2014 = finalMatchIn2014[0]["Away Team Goals"];
+console.log(awayTeamGoalsIn2014)
 
-// Kazanan takımı bulur
-function whoIsWinner(arr){
+//(e) 2014 Dünya kupası finali kazananı*/
+
+function whoIsWinner(arr){ // Kazanan takımı bulur
 	if(arr[0]['Home Team Goals'] > arr[0]['Away Team Goals']){
 	  return arr[0]['Home Team Name']
 	}else{
 	  return arr[0]['Away Team Name']
 	}
   }
-
   console.log("Winner : ", whoIsWinner(finalMatchIn2014))
-
 
 /*  Görev 2: 
 	Finaller adlı fonksiyonu kullanarak aşağıdakileri uygulayın:
@@ -168,7 +163,6 @@ function OrtalamaGolSayisi(finalMatches) {
   return (averageAwayTeamGoals + averageHomeTeamGoals).toFixed(2)
 
 }
-
 
 /// EKSTRA ÇALIŞMALAR ///
 
