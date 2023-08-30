@@ -1,6 +1,5 @@
 const { fifaData } = require('./fifa.js')
 
-
 /* Görev 1: 
 	Verilen datayı parçalayarak aşağıdaki verileri (console.log-ing) elde ederek pratik yapın. 
 	
@@ -166,7 +165,7 @@ function OrtalamaGolSayisi(finalMatches) {
 	İpucu: "takım kısaltmaları" (team initials) için datada araştırma yapın!
 İpucu: `.reduce` Kullanın*/
 
-function UlkelerinKazanmaSayilari(finalMatches) {
+function UlkelerinKazanmaSayilari(finalMatches,initials) {
 	let winnerTeamInitial= []
 	for(let match of finalMatches){
 		if(match['Home Team Goals'] > match['Away Team Goals']){
@@ -183,23 +182,11 @@ function UlkelerinKazanmaSayilari(finalMatches) {
 		}
 		return acc;
 	},{});
-	
-	/* En çok kazanan takımı bulur
-	let maxKey = null;
-	let maxValue = 0;
-	let winner = []
-	for(let key in winnerTeams){
-		if(winnerTeams[key]>maxValue){
-			maxValue = winnerTeams[key]
-			maxKey = key;
-		}
-	}
-	console.log("Winner : ", maxKey, " Trophy : ", maxValue)
-	*/
-	return winnerTeams
-	
+	//hint dynamic object key
+	console.log(winnerTeams)
+	return winnerTeams[initials]
 }
-console.log(UlkelerinKazanmaSayilari(Finaller(fifaData)))
+console.log("Aldığı kupa sayısı: ",UlkelerinKazanmaSayilari(Finaller(fifaData),"ITA"))
 
 
 /*  BONUS 2:  
@@ -233,6 +220,7 @@ function EnCokGolAtan(finalMatches) {
 			result[key] += value;
 		}
 	}
+
 	let maxKey = null;
 	let maxValue = -Infinity; //sayısal değerler de en küçük değer ya da 0 da konulabilir
 
@@ -292,6 +280,17 @@ function EnKotuDefans(finalMatches) {
 console.log("En çok gol yiyen",EnKotuDefans(Finaller(fifaData)),"takımıdır") 
 
 /* Hala vaktiniz varsa, README dosyasında listelenen hedeflerden istediğinizi aşağıdaki boşluğa yazabilirsiniz. */
+const stretchFunctions = require('./stretch.js');
+//1- [X] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında yer alma sayılarını dönünen bir fonksiyon yaratabilirsiniz.
+
+console.log("En çok katılan takım:", stretchFunctions.mostAttendedTeamFinder(Finaller(fifaData)))
+
+//2- [X] 'Finaller' veri setinde beraberlikleri de hesaba katabilirsiniz.
+console.log("Finallerde kazanan takımlar: ", stretchFunctions.winnerTeamsInFinals(Finaller(fifaData)))
+
+//3- [X] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında attıkları gol sayılarını(1930 sonrası) dönen bir fonksiyon yaratabilirsiniz.
+
+console.log("Takımın attığı gol sayısı:", stretchFunctions.findGoalsOfTeam(Finaller(fifaData),"ITA"))
 
 
 /* Bu satırın aşağısındaki kodları lütfen değiştirmeyin */

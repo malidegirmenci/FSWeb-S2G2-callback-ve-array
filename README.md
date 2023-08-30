@@ -85,9 +85,9 @@ Görevleri bitirdikten sonra `stretch.js` isimli bir dosya oluşturunuz ve array
 
 Aşağıdaki görevleri yapmayı deneyebilirsiniz.
 
-- [ ] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında yer alma sayılarını dönünen bir fonksiyon yaratabilirsiniz.
-- [ ] 'Finaller' veri setinde beraberlikleri de hesaba katabilirsiniz.
-- [ ] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında attıkları gol sayılarını(1930 sonrası) dönen bir fonksiyon yaratabilirsiniz.
+- [X] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında yer alma sayılarını dönünen bir fonksiyon yaratabilirsiniz.
+- [X] 'Finaller' veri setinde beraberlikleri de hesaba katabilirsiniz.
+- [X] Ülke kısaltmalarını parametre olarak alan ve dünya kupasında attıkları gol sayılarını(1930 sonrası) dönen bir fonksiyon yaratabilirsiniz.
 
 ## Merak Edilenler
 
